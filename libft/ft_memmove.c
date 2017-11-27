@@ -3,40 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 10:43:34 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/16 10:59:29 by tfavart          ###   ########.fr       */
+/*   Created: 2017/11/08 11:34:06 by ctrouill          #+#    #+#             */
+/*   Updated: 2017/11/10 18:10:32 by ctrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void		*ft_memmove(void *dst, const void *src, size_t len)
+/*
+** memmove -- copy byte string
+*/
+
+void	*ft_memmove(void *s1, const void *s2, size_t n)
 {
-	unsigned char	*dest;
-	unsigned char	*sr;
-	size_t			i;
+	char		*dest;
+	const char	*src;
 
-	i = 0;
-	dest = (unsigned char*)(dst);
-	sr = (unsigned char*)(src);
-	if (dest == sr)
-		return (dest);
-	if (src < dst)
-	{
-		dest = (unsigned char*)(&dst[len - 1]);
-		sr = (unsigned char*)(&src[len - 1]);
-		while (len > 0)
-		{
-			*dest = *sr;
-			len--;
-			dest--;
-			sr--;
-		}
-	}
+	dest = (char *)s1;
+	src = (const char *)s2;
+	if (s2 >= s1)
+		s1 = ft_memcpy(s1, s2, n);
 	else
-		dest = ft_memcpy(dst, src, len);
-	return ((void*)dst);
+	{
+		dest += n;
+		src += n;
+		while (n--)
+			*--dest = *--src;
+	}
+	return (s1);
 }

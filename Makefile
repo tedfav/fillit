@@ -11,8 +11,8 @@ NAME = fillit
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra -g
-LDFLAGS = -L$(LIBFT) -lft
+CCFLAGS = -Wall -Werror -Wextra
+LDFLAGS = ./libft/libft.a
 
 #  ╓─────[ Functions ]─  
 #  ╙───────────────────── ─ ─
@@ -38,13 +38,12 @@ $(NAME): $(OBJ)
 	@$(CC) $(CCFLAGS) -I$(INC)  -c -o $@ $<
 
 clean:
-	@/bin/rm -Rf $(OBJ)
-	@/bin/rm -rf $(OBJSPATH)
+	@$(MAKE) -C $(LIBFT) clean
+	@rm -rf $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C $(LIBFT) fclean
-	@echo  "\033[0;31m [✗] \033[0m \033[0;33m Removed last build: \033[0m " $(NAME)
+	@$(MAKE) -C $(LIBFT) fclean
 
 re:
 	@$(MAKE) fclean

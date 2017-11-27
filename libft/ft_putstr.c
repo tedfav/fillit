@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 16:16:16 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/09 13:47:03 by tfavart          ###   ########.fr       */
+/*   Created: 2017/11/09 15:14:55 by ctrouill          #+#    #+#             */
+/*   Updated: 2017/11/09 15:42:41 by ctrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
 void	ft_putstr(char const *s)
 {
-	if (s != (NULL))
-		write(1, s, ft_strlen(s));
+	if (s)
+		ft_putstr_fd(s, 1);
 }

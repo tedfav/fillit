@@ -6,7 +6,7 @@
 /*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 13:14:00 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/21 16:55:31 by tfavart          ###   ########.fr       */
+/*   Updated: 2017/11/27 16:51:52 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@ void			ft_free_tab(char **tab)
 {
 	int			i;
 
-	i = 0;
+	i = -1;
 	if (tab[0] == 0)
 	{
 		free(tab);
 		return ;
 	}
-	while (tab[i])
-	{
+	while (tab[++i])
 		free(tab[i]);
-		i++;
-	}
 	free(tab);
 }
 
@@ -118,6 +115,7 @@ t_lst			*ft_parser(char **tab, size_t size_map)
 		tmp = new;
 		if (!(new = ft_new(&tab[i * 4])))
 			ft_free_lst(begin);
+		new->i = (int)i;
 		tmp->next = new;
 		i++;
 	}

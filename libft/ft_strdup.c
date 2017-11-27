@@ -3,30 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 16:53:23 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/15 17:47:08 by tfavart          ###   ########.fr       */
+/*   Created: 2017/11/08 14:21:32 by ctrouill          #+#    #+#             */
+/*   Updated: 2017/11/08 14:41:14 by ctrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
 #include "libft.h"
 
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
-	char	*cpy;
-	int		i;
+	char	*tmp;
+	size_t	i;
 
 	i = 0;
-	if (!(cpy = (char *)malloc(sizeof(*cpy) * (ft_strlen(s1) + 1))))
+	if (!(tmp = (char *)malloc(sizeof(char) * (ft_strlen((char*)s) + 1))))
 		return (NULL);
-	while (s1[i] != '\0')
+	while (s[i] != '\0')
 	{
-		cpy[i] = s1[i];
+		tmp[i] = s[i];
 		i++;
 	}
-	cpy[i] = '\0';
-	return (cpy);
+	tmp[i] = '\0';
+	return (tmp);
 }

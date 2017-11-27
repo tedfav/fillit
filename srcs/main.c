@@ -6,12 +6,11 @@
 /*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:37:29 by ctrouill          #+#    #+#             */
-/*   Updated: 2017/11/21 16:30:02 by tfavart          ###   ########.fr       */
+/*   Updated: 2017/11/27 16:50:00 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fillit.h>
-#include <stdio.h>
+#include "fillit.h"
 
 int				main(int ac, char **av)
 {
@@ -22,12 +21,12 @@ int				main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_putendl("Usage: fillit <input>");
+		ft_putendl("Usage: fillit <input>.fillit");
 		return (1);
 	}
 	str = parse_raw((const char*)(av[1]));
 	if (!ft_isvalid_tetri(str))
-	  error("error.");
+		error("error");
 	nb_tetri = number_map(str);
 	tab = ft_strsplit(str, '\n');
 	free((char*)str);

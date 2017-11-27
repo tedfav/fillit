@@ -3,39 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 18:27:50 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/15 18:06:38 by tfavart          ###   ########.fr       */
+/*   Created: 2017/11/09 13:59:36 by ctrouill          #+#    #+#             */
+/*   Updated: 2017/11/09 14:44:50 by ctrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	int		i;
+	char *ret;
 
-	i = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	if (!(str = (char*)malloc(sizeof(*str) * (ft_strlen(s1) +
-						ft_strlen(s2) + 1))))
-		return (NULL);
-	while (*s1)
+	ret = NULL;
+	if (s1 && s2)
 	{
-		str[i] = *s1;
-		i++;
-		s1++;
+		if (!(ret = ft_strnew(ft_strlen((char*)s1) + ft_strlen((char*)s2))))
+			return (NULL);
+		ft_memcpy(ret, s1, ft_strlen((char*)s1));
+		ft_strcat(ret, s2);
 	}
-	while (*s2)
-	{
-		str[i] = *s2;
-		i++;
-		s2++;
-	}
-	str[i] = '\0';
-	return (str);
+	else if (s1)
+		return (ft_strdup(s1));
+	else if (s2)
+		return (ft_strdup(s2));
+	return (ret);
 }

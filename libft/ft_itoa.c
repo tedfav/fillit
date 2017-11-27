@@ -3,69 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 10:39:07 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/15 10:39:43 by tfavart          ###   ########.fr       */
+/*   Created: 2017/11/10 09:37:32 by ctrouill          #+#    #+#             */
+/*   Updated: 2017/11/10 10:51:17 by ctrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static int		ft_len(int n)
+static size_t	ft_nbrlen(int n)
 {
-	int i;
-	int nb;
+	size_t	i;
 
 	i = 0;
-	nb = n;
-	if (n < 0)
+	while (n <= -10 || n >= 10)
 	{
-		i++;
-		nb = -n;
-	}
-	if (nb == 0)
-		return (1);
-	while (nb > 0)
-	{
-		nb = nb / 10;
+		n /= 10;
 		i++;
 	}
-	return (i);
-}
-
-static void		ft_res(char *res, int i, int abs, int n)
-{
-	while (i >= 0)
-	{
-		if (i == 0 && n < 0)
-			res[i] = '-';
-		else
-		{
-			res[i] = (abs % 10) + '0';
-			abs = abs / 10;
-		}
-		i--;
-	}
+	return ((n < 0) ? (i + 2) : (i + 1));
 }
 
 char			*ft_itoa(int n)
 {
-	char	*res;
-	int		abs;
-	int		i;
+	size_t		nbrlen;
+	size_t		i;
+	char		*res;
 
-	i = ft_len(n);
-	if (!(res = (char *)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	res[i] = '\0';
-	i--;
-	abs = n;
-	if (n < 0)
-		abs = -n;
-	ft_res(res, i, abs, n);
+	nbrlen = ft_nbrlen(n);
+	i = nbrlen - 1;
+	res = (char *)malloc(sizeof(char) * (nbrlen + 1));
+	if (!res)
+		return (NULL);
+	while (n <= -10 || n >= 10)
+	{
+		res[i] = (n < 0) ? (-n % 10 + '0') : (n % 10 + '0');
+		n /= 10;
+		i--;
+	}
+	res[i--] = (n < 0) ? (-n + '0') : (n + '0');
+	if (i == 0)
+		res[i] = ('-');
+	res[nbrlen] = '\0';
 	return (res);
 }

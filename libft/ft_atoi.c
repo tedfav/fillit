@@ -3,40 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 06:02:06 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/15 11:11:50 by tfavart          ###   ########.fr       */
+/*   Created: 2017/11/09 09:15:37 by ctrouill          #+#    #+#             */
+/*   Updated: 2017/11/11 11:06:56 by ctrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int						ft_atoi(const char *str)
+int					ft_atoi(const char *str)
 {
-	unsigned long long	result;
-	int					i;
-	int					neg;
+	size_t	i;
+	size_t	n;
+	int		res;
 
-	result = 0;
 	i = 0;
-	neg = 1;
-	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\v' ||
-			str[i] == ' ' || str[i] == '\f' || str[i] == '\r')
+	n = 1;
+	res = 0;
+	while (ft_isspace(str[i]))
 		i++;
-	if (str[i] == '-')
-		neg = -1;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == 45)
+		n = -1;
+	if (str[i] == '+' || str[i] == '-')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10;
-		result = result + str[i] - '0';
+		res *= 10;
+		res += (int)str[i] - 48;
 		i++;
 	}
-	if ((result > 9223372036854775807 || i > 19) && neg == -1)
-		return (0);
-	if ((result > 9223372036854775807 || i > 19) && neg == 1)
-		return (-1);
-	return (neg * (int)result);
+	return (res * n);
 }

@@ -3,28 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 16:24:52 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/09 16:40:51 by tfavart          ###   ########.fr       */
+/*   Created: 2017/11/09 11:29:20 by ctrouill          #+#    #+#             */
+/*   Updated: 2017/11/09 11:48:32 by ctrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char		*ft_strnew(size_t size)
+char	*ft_strnew(size_t size)
 {
-	char	*str;
-	size_t	i;
+	char	*mafraicheur;
 
-	i = 0;
-	if (!(str = (char*)malloc(sizeof(*str) * (size + 1))))
+	if (!(mafraicheur = (char*)ft_memalloc(sizeof(char) * size + 1)))
 		return (NULL);
-	while (i <= size)
-	{
-		str[i] = '\0';
-		i++;
-	}
-	return (str);
+	mafraicheur[size + 1] = '\0';
+	return (mafraicheur);
 }

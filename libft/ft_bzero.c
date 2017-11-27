@@ -3,24 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 10:26:01 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/10 10:30:34 by tfavart          ###   ########.fr       */
+/*   Created: 2017/11/08 09:10:29 by ctrouill          #+#    #+#             */
+/*   Updated: 2017/11/10 16:53:20 by ctrouill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+** bzero -- write zeroes to a byte string
+*/
+
 void	ft_bzero(void *s, size_t n)
 {
-	char	*a;
-
-	a = (char*)s;
-	while (n > 0)
-	{
-		*a = '\0';
-		a++;
-		n--;
-	}
+	ft_memset(s, 0, n);
 }
