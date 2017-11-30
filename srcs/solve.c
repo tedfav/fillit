@@ -6,7 +6,7 @@
 /*   By: tfavart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 13:18:36 by tfavart           #+#    #+#             */
-/*   Updated: 2017/11/27 16:55:18 by tfavart          ###   ########.fr       */
+/*   Updated: 2017/11/29 18:13:36 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,6 @@ static int			ft_data(t_lst *list, char **tab, int len, int coord)
 	return (1);
 }
 
-/*
-** fonction de resolution par backtraking sur laquel
-** je me casse grave la tete!!!!!!!!!
-*/
-
 static int			ft_reso(t_lst *list, char **tab, int len)
 {
 	int				x;
@@ -88,11 +83,6 @@ static int			ft_reso(t_lst *list, char **tab, int len)
 	return (0);
 }
 
-/*
-** allocation du tableau fonction de len et
-** de l'ingremantation de i dans ft_solve
-*/
-
 static char			**ft_alloc_tab(int len, int i, int x)
 {
 	char			**colonnes;
@@ -121,12 +111,6 @@ static char			**ft_alloc_tab(int len, int i, int x)
 	colonnes[x] = 0;
 	return (colonnes);
 }
-
-/*
-** ft_solve demande la creation du tableau de
-** resolution en partant du plus petit et en
-** s'agrandissant si la solution n'a pas etait trouve
-*/
 
 void				ft_solve(t_lst *list, int len)
 {
