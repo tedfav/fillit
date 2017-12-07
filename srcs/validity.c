@@ -6,7 +6,7 @@
 /*   By: ctrouill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 13:06:46 by ctrouill          #+#    #+#             */
-/*   Updated: 2017/11/27 16:51:04 by tfavart          ###   ########.fr       */
+/*   Updated: 2017/12/01 18:11:39 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int		ft_isover(const char *raw, size_t i, size_t j)
 			j = 0;
 		}
 	}
+	if (j != 4)
+		return (0);
 	return (1);
 }
 
@@ -72,7 +74,7 @@ static int		ft_isuniform(const char *raw, size_t i, size_t x, size_t y)
 	{
 		if (!(ft_iscallowed(raw[i])))
 			return (0);
-		if (raw[i] == '\n' && raw[i + 1] == '\n')
+		if (raw[i] == '\n' && (raw[i + 1] == '\n' || raw[i + 1] == '\0'))
 			if ((i != ((++x * 19) + (++y * 2))))
 				return (0);
 	}
