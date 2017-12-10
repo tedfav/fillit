@@ -110,7 +110,7 @@ t_lst			*ft_parser(char **tab, size_t size_map)
 		ft_free_lst(new);
 	begin = new;
 	i = 1;
-	while (i < size_map && tab[i * 4] != '\0')
+	while (i < size_map && (tab[i * 4]) != 0)
 	{
 		tmp = new;
 		if (!(new = ft_new(&tab[i * 4], i)))

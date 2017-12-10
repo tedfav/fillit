@@ -11,7 +11,7 @@ NAME = fillit
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra
+CCFLAGS = -Wall -Wextra -Werror
 LDFLAGS = ./libft/libft.a
 
 #  ╓─────[ Functions ]─  

@@ -16,10 +16,8 @@ char	**alloc_tmp(size_t x, size_t y)
 {
 	char	**ret;
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	j = 0;
 	if (!(ret = (char**)malloc(sizeof(char*) * y)))
 		return (NULL);
 	while (i < y)
